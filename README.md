@@ -4,7 +4,7 @@
 
 ## 简介
 
-通过原生go-gin实现的Yurikoto第一版API，如果您有任何建议或改进想法，欢迎提交issue或pr。
+通过go-gin实现的Yurikoto第一版API，如果您有任何建议或改进想法，欢迎提交issue或pr。
 
 [Yurikoto主页](https://yurikoto.com)
 
