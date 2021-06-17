@@ -40,14 +40,7 @@ go build
 
 ### 运行
 
-将可执行文件与`config.ini`与`favicon.ico`上传到服务器，进入到所在目录，执行：
-
-```shell script
-./yurikoto-api-v1
-```
-
-若程序未退出，则上述操作成功。`ctrl+c`退出运行。
-在`lib/systemd/system`下创建`yurikoto-api-v1.service`，内容如下：
+将可执行文件与`config.ini`与`favicon.ico`上传到服务器。在`lib/systemd/system`下创建`yurikoto-api-v1.service`，内容如下：
 
 ```ini
 [Unit]
