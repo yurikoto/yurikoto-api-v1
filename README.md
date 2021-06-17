@@ -11,6 +11,7 @@
 ## 自部署指南
 
 ### 环境
+
 以下为Yurikoto官方使用的环境
 CentOS 8.2
 Nginx 1.17
@@ -19,9 +20,11 @@ MySQL 5.7
 Redis 6.0.10
 
 ### 数据库
+
 本项目使用gorm进行数据库操作，无需提前创建表等。如需要使用Yurikoto官方数据库，请提交issue并留下您的邮箱以获取数据库备份。
 
 ### 配置文件
+
 根据文件内提示修改`config.template.ini`并重命名为`config.ini`
 
 ### 编译
@@ -36,6 +39,7 @@ go build
 执行上述命令后项目目录会出现可执行文件`yurikoto-api-go-v1`
 
 ### 运行
+
 将可执行文件与`config.ini`与`favicon.ico`上传到服务器，进入到所在目录，执行：
 
 ```shell script
