@@ -25,21 +25,26 @@ Redis 6.0.10
 根据文件内提示修改`config.template.ini`并重命名为`config.ini`
 
 ### 编译
+
 ```shell
 go mod download
 SET GOOS=linux
 SET GOARCH=amd64
 go build
 ```
+
 执行上述命令后项目目录会出现可执行文件`yurikoto-api-go-v1`
 
 ### 运行
 将可执行文件与`config.ini`与`favicon.ico`上传到服务器，进入到所在目录，执行：
+
 ```shell script
 ./yurikoto-api-v1
 ```
+
 若程序未退出，则上述操作成功。`ctrl+c`退出运行。
 在`lib/systemd/system`下创建`yurikoto-api-v1.service`，内容如下：
+
 ```ini
 [Unit]
 Description=Yurikoto API V1 Service
@@ -55,10 +60,13 @@ ExecStart=/path/yurikoto-api-go-v1 -c /path/
 [Install]
 WantedBy=multi-user.target
 ```
+
 并将`path`替换为可执行文件所在目录（`ExecStart`末尾斜杠需保留）。执行：
+
 ```shell script
 systemctl enable yurikoto-api-v1
 systemctl start yurikoto-api-v1
 systemctl status yurikoto-api-v1
 ```
+
 若显示"active"字样，则说明部署成功。
