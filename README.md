@@ -60,7 +60,7 @@ WantedBy=multi-user.target
 
 并将`path`替换为可执行文件所在目录（`ExecStart`末尾斜杠需保留）。执行：
 
-```shell script
+```shell
 systemctl enable yurikoto-api-v1
 systemctl start yurikoto-api-v1
 systemctl status yurikoto-api-v1
