@@ -22,6 +22,11 @@ func NewWallpaperController(service service.WallpaperService) WallpaperControlle
 	}
 }
 
+/**
+ * @Description: 随机壁纸
+ * @receiver c 壁纸控制器
+ * @param ctx
+ */
 func (c *wallpaperController) Take(ctx *gin.Context) {
 	encode := ctx.Query("encode")
 	res := c.wallpaperService.Take(ctx)

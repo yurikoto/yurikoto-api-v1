@@ -35,6 +35,12 @@ func (db *wallpaperDatabase) CloseDB() {
 	}
 }
 
+/**
+ * @Description: 获取随机记录
+ * @receiver db
+ * @param t
+ * @return entity.Wallpaper
+ */
 func (db *wallpaperDatabase) Take(t string) entity.Wallpaper {
 	var wallpaper entity.Wallpaper
 	db.connection.Set("gorm:auto_preload", true).Where("type = ?", t).Order("rand()").Take(&wallpaper)

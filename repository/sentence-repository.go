@@ -35,6 +35,11 @@ func (db *sentenceDatabase) CloseDB() {
 	}
 }
 
+/**
+ * @Description: 获取随机记录
+ * @receiver db
+ * @return entity.Sentence
+ */
 func (db *sentenceDatabase) Take() entity.Sentence {
 	var sentence entity.Sentence
 	db.connection.Set("gorm:auto_preload", true).Order("rand()").Take(&sentence)

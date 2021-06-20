@@ -20,6 +20,11 @@ func NewStatisticController(service service.StatisticService) StatisticControlle
 	}
 }
 
+/**
+ * @Description: 请求统计
+ * @receiver c 请求统计控制器
+ * @param ctx
+ */
 func (c *statisticController) Get(ctx *gin.Context) {
 	res := c.statisticService.Get()
 	ctx.JSON(http.StatusOK, res)

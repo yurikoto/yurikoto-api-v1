@@ -22,6 +22,11 @@ func NewSentenceController(service service.SentenceService) SentenceController {
 	}
 }
 
+/**
+ * @Description: 随机台词
+ * @receiver c 台词控制器
+ * @param ctx
+ */
 func (c *sentenceController) Take(ctx *gin.Context) {
 	res := c.sentenceService.Take()
 	if ctx.Query("encode") == "text" {

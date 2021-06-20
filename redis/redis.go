@@ -4,6 +4,10 @@ import redis2 "github.com/go-redis/redis/v8"
 
 var redis *redis2.Client
 
+/**
+ * @Description: 静态redis
+ * @return *redis2.Client
+ */
 func GetRedis() *redis2.Client {
 	if redis != nil {
 		return redis

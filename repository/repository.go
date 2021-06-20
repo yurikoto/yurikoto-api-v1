@@ -8,6 +8,10 @@ import (
 
 var db *gorm.DB
 
+/**
+ * @Description: 静态mysql链接
+ * @return *gorm.DB
+ */
 func GetDB() *gorm.DB {
 	if db != nil {
 		return db
