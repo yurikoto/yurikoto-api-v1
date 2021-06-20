@@ -2,7 +2,7 @@
 
 > 使用或自部署本代码请严格遵守AGPL-3.0协议。本仓库代码可供学习使用，但Yurikoto提供的壁纸、台词资源严禁商用
 
-[![Open Source Helpers](https://www.codetriage.com/yurikoto/yurikoto-api-v1/badges/users.svg)](https://www.codetriage.com/yurikoto/yurikoto-api-v1) [![Go Report Card](https://goreportcard.com/badge/github.com/yurikoto/yurikoto-api-v1)](https://goreportcard.com/report/github.com/yurikoto/yurikoto-api-v1) [![Maintainability](https://api.codeclimate.com/v1/badges/1ef898f65c8c593baf49/maintainability)](https://codeclimate.com/github/yurikoto/yurikoto-api-v1/maintainability)
+[![Open Source Helpers](https://www.codetriage.com/yurikoto/yurikoto-api-v1/badges/users.svg)](https://www.codetriage.com/yurikoto/yurikoto-api-v1) [![Go Report Card](https://goreportcard.com/badge/github.com/yurikoto/yurikoto-api-v1)](https://goreportcard.com/report/github.com/yurikoto/yurikoto-api-v1) [![Maintainability](https://api.codeclimate.com/v1/badges/1ef898f65c8c593baf49/maintainability)](https://codeclimate.com/github/yurikoto/yurikoto-api-v1/maintainability) [![DeepScan grade](https://deepscan.io/api/teams/14502/projects/17635/branches/409513/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=14502&pid=17635&bid=409513) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fyurikoto%2Fyurikoto-api-v1.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fyurikoto%2Fyurikoto-api-v1?ref=badge_shield)
 
 ## 简介
 
