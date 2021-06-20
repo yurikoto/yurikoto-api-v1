@@ -2,6 +2,8 @@
 
 > 使用或自部署本代码请严格遵守AGPL-3.0协议。本仓库代码可供学习使用，但Yurikoto提供的壁纸、台词资源严禁商用
 
+[![Open Source Helpers](https://www.codetriage.com/yurikoto/yurikoto-api-v1/badges/users.svg)](https://www.codetriage.com/yurikoto/yurikoto-api-v1) [![Go Report Card](https://goreportcard.com/badge/github.com/yurikoto/yurikoto-api-v1)](https://goreportcard.com/report/github.com/yurikoto/yurikoto-api-v1) [![Maintainability](https://api.codeclimate.com/v1/badges/1ef898f65c8c593baf49/maintainability)](https://codeclimate.com/github/yurikoto/yurikoto-api-v1/maintainability)
+
 ## 简介
 
 通过go-gin实现的Yurikoto第一版API，如果您有任何建议或改进想法，欢迎提交issue或pr。
@@ -67,3 +69,23 @@ systemctl status yurikoto-api-v1
 ```
 
 若显示"active"字样，则说明部署成功。
+
+### 反向代理
+```nginx
+location /
+{
+    proxy_pass http://127.0.0.1:3417;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE-HOST $remote_addr;
+    
+    add_header Access-Control-Allow-Origin *;
+    add_header X-Cache $upstream_cache_status;
+    
+    #Set Nginx Cache
+    
+    	add_header Cache-Control no-cache;
+    expires 12h;
+}
+```
