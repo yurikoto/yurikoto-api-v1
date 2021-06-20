@@ -1,28 +1,28 @@
 package entity
 
-type SentenceSta struct{
-	Uploaded int `json:"uploaded"`
-	Approved int `json:"approved"`
+type SentenceSta struct {
+	Uploaded  int `json:"uploaded"`
+	Approved  int `json:"approved"`
 	Requested int `json:"requested"`
 }
 
-type WallpaperSta struct{
-	Approved int `json:"approved"`
+type WallpaperSta struct {
+	Approved  int `json:"approved"`
 	Requested int `json:"requested"`
 }
 
-type OtherSta struct{
-	SiteServed     int `json:"site_served"`
+type OtherSta struct {
+	SiteServed     int    `json:"site_served"`
 	WpPluginLatest string `json:"wp_plugin_latest"`
 }
 
-type Data struct{
-	Sentence SentenceSta `json:"sentence"`
+type Data struct {
+	Sentence  SentenceSta  `json:"sentence"`
 	Wallpaper WallpaperSta `json:"wallpaper"`
-	Other OtherSta `json:"other"`
+	Other     OtherSta     `json:"other"`
 }
 
-type Statistic struct{
+type Statistic struct {
 	Status string `json:"status"`
-	Data Data `json:"data"`
+	Data   Data   `json:"data"`
 }

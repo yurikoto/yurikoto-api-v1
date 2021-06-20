@@ -8,13 +8,13 @@ import (
 
 var db *gorm.DB
 
-func GetDB() *gorm.DB{
-	if db != nil{
+func GetDB() *gorm.DB {
+	if db != nil {
 		return db
 	}
 	dsn := config.Mysql.Username + ":" + config.Mysql.Pwd + "@tcp(" + config.Mysql.Host + ":" + config.Mysql.Port + ")/" + config.Mysql.Dbname + "?charset=" + config.Mysql.Charset + "&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil{
+	if err != nil {
 		panic("Failed to connect database")
 	}
 	return db

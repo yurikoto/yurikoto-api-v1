@@ -10,14 +10,14 @@ type SentenceRepository interface {
 	CloseDB()
 }
 
-type sentenceDatabase struct{
+type sentenceDatabase struct {
 	connection *gorm.DB
 }
 
-func NewSentenceRepository() SentenceRepository{
+func NewSentenceRepository() SentenceRepository {
 	db := GetDB()
 	err := db.AutoMigrate(&entity.Sentence{})
-	if err != nil{
+	if err != nil {
 		panic(err.Error())
 	}
 	return &sentenceDatabase{
@@ -25,17 +25,17 @@ func NewSentenceRepository() SentenceRepository{
 	}
 }
 
-func (db *sentenceDatabase) CloseDB(){
+func (db *sentenceDatabase) CloseDB() {
 	sqlDB, err := db.connection.DB()
-	if sqlDB != nil{
+	if sqlDB != nil {
 		err = sqlDB.Close()
 	}
-	if err != nil{
+	if err != nil {
 		panic("Failed to close database")
 	}
 }
 
-func (db *sentenceDatabase) Take() entity.Sentence{
+func (db *sentenceDatabase) Take() entity.Sentence {
 	var sentence entity.Sentence
 	db.connection.Set("gorm:auto_preload", true).Order("rand()").Take(&sentence)
 	// db.connection.Set("gorm:auto_preload", true).Raw("SELECT name, age FROM users WHERE name = ?", "Antonio").Scan(&result)

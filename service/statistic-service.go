@@ -6,17 +6,17 @@ import (
 	"yurikoto.com/yurikoto-api-go-v1/redis"
 )
 
-type StatisticService interface{
+type StatisticService interface {
 	Get() entity.Statistic
 }
 
 type statisticService struct{}
 
-func NewStatisticService() StatisticService{
+func NewStatisticService() StatisticService {
 	return &statisticService{}
 }
 
-func (service *statisticService) Get() entity.Statistic{
+func (service *statisticService) Get() entity.Statistic {
 	var statistic entity.Statistic
 	rdb := redis.GetRedis()
 	ctx := context.Background()
@@ -28,7 +28,7 @@ func (service *statisticService) Get() entity.Statistic{
 	statistic.Data.Wallpaper.Requested, err = rdb.Get(ctx, "wallpaper_requested").Int()
 	statistic.Data.Other.SiteServed = int(rdb.SCard(ctx, "domain_transfered").Val())
 	statistic.Data.Other.WpPluginLatest, err = rdb.Get(ctx, "wp_plugin_latest").Result()
-	if err != nil{
+	if err != nil {
 		panic(err.Error())
 	}
 	statistic.Status = "success"

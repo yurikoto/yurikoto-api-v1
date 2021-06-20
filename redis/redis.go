@@ -4,8 +4,8 @@ import redis2 "github.com/go-redis/redis/v8"
 
 var redis *redis2.Client
 
-func GetRedis() *redis2.Client{
-	if redis != nil{
+func GetRedis() *redis2.Client {
+	if redis != nil {
 		return redis
 	}
 	redis = redis2.NewClient(&redis2.Options{

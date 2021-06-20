@@ -10,17 +10,17 @@ type StatisticController interface {
 	Get(ctx *gin.Context)
 }
 
-type statisticController struct{
+type statisticController struct {
 	statisticService service.StatisticService
 }
 
-func NewStatisticController(service service.StatisticService) StatisticController{
+func NewStatisticController(service service.StatisticService) StatisticController {
 	return &statisticController{
 		statisticService: service,
 	}
 }
 
-func (c *statisticController) Get(ctx *gin.Context){
+func (c *statisticController) Get(ctx *gin.Context) {
 	res := c.statisticService.Get()
 	ctx.JSON(http.StatusOK, res)
 }

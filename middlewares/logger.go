@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func Logger() gin.HandlerFunc{
+func Logger() gin.HandlerFunc {
 	return gin.LoggerWithFormatter(func(param gin.LogFormatterParams) string {
 		return fmt.Sprintf("%s - [%s] %s %s %d %s \n",
 			param.ClientIP,
