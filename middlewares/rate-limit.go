@@ -46,11 +46,16 @@ func RateLimit() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ip := c.ClientIP()
 
-		if ip == "::1" {
-			return
-		}
+		//if ip == "::1" {
+		//	return
+		//}
 
 		rdb := myRedis.GetRedis()
+
+		isMemberW, _ := rdb.SIsMember(ctx, "ip_whitelist", ip).Result()
+		if isMemberW {
+			return
+		}
 
 		referer := c.GetHeader("Referer")
 		u, err := url.Parse(referer)
