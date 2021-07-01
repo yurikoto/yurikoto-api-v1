@@ -43,7 +43,11 @@ func (db *wallpaperDatabase) CloseDB() {
  */
 func (db *wallpaperDatabase) Take(t string) entity.Wallpaper {
 	var wallpaper entity.Wallpaper
-	db.connection.Set("gorm:auto_preload", true).Where("type = ?", t).Order("rand()").Take(&wallpaper)
+	if t == "rand" {
+		db.connection.Set("gorm:auto_preload", true).Order("rand()").Take(&wallpaper)
+	} else {
+		db.connection.Set("gorm:auto_preload", true).Where("type = ?", t).Order("rand()").Take(&wallpaper)
+	}
 	// db.connection.Set("gorm:auto_preload", true).Raw("SELECT name, age FROM users WHERE name = ?", "Antonio").Scan(&result)
 
 	return wallpaper

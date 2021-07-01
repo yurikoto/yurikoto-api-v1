@@ -31,7 +31,7 @@ func (service *wallpaperService) Take(ctx *gin.Context) entity.Wallpaper {
 	rdb.Incr(context.Background(), key)
 
 	t := ctx.Query("type")
-	if t == "day" || t == "night" {
+	if t == "day" || t == "night" || t == "rand" {
 		return service.wallpaperRepository.Take(t)
 	} else {
 		h := time.Now().Hour()
