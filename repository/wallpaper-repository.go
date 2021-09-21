@@ -6,7 +6,7 @@ import (
 )
 
 type WallpaperRepository interface {
-	Take(t string) entity.Wallpaper
+	Take(t string, o string) entity.Wallpaper
 	CloseDB()
 }
 
@@ -41,12 +41,16 @@ func (db *wallpaperDatabase) CloseDB() {
  * @param t
  * @return entity.Wallpaper
  */
-func (db *wallpaperDatabase) Take(t string) entity.Wallpaper {
+func (db *wallpaperDatabase) Take(t string, o string) entity.Wallpaper {
 	var wallpaper entity.Wallpaper
-	if t == "rand" {
+	if o == "rand" && t != "rand" {
+		db.connection.Set("gorm:auto_preload", true).Where("type = ?", t).Order("rand()").Take(&wallpaper)
+	} else if o != "rand" && t == "rand" {
+		db.connection.Set("gorm:auto_preload", true).Where("orientation = ?", o).Order("rand()").Take(&wallpaper)
+	} else if o == "rand" && t == "rand" {
 		db.connection.Set("gorm:auto_preload", true).Order("rand()").Take(&wallpaper)
 	} else {
-		db.connection.Set("gorm:auto_preload", true).Where("type = ?", t).Order("rand()").Take(&wallpaper)
+		db.connection.Set("gorm:auto_preload", true).Where("type = ? AND orientation = ?", t, o).Order("rand()").Take(&wallpaper)
 	}
 	// db.connection.Set("gorm:auto_preload", true).Raw("SELECT name, age FROM users WHERE name = ?", "Antonio").Scan(&result)
 

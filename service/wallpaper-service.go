@@ -31,8 +31,12 @@ func (service *wallpaperService) Take(ctx *gin.Context) entity.Wallpaper {
 	rdb.Incr(context.Background(), key)
 
 	t := ctx.Query("type")
+	o := ctx.Query("orientation")
+	if o != "vertical" && o != "horizontal" && o != "rand" {
+		o = "horizontal"
+	}
 	if t == "day" || t == "night" || t == "rand" {
-		return service.wallpaperRepository.Take(t)
+		return service.wallpaperRepository.Take(t, o)
 	} else {
 		h := time.Now().Hour()
 		utc := ctx.Query("utc")
@@ -48,9 +52,9 @@ func (service *wallpaperService) Take(ctx *gin.Context) entity.Wallpaper {
 			h = (h + 24) % 24
 		}
 		if h >= 6 && h <= 19 {
-			return service.wallpaperRepository.Take("day")
+			return service.wallpaperRepository.Take("day", o)
 		} else {
-			return service.wallpaperRepository.Take("night")
+			return service.wallpaperRepository.Take("night", o)
 		}
 	}
 }
