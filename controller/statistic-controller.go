@@ -27,5 +27,6 @@ func NewStatisticController(service service.StatisticService) StatisticControlle
  */
 func (c *statisticController) Get(ctx *gin.Context) {
 	res := c.statisticService.Get()
+	res.Data.Other.ClientIP = ctx.ClientIP()
 	ctx.JSON(http.StatusOK, res)
 }

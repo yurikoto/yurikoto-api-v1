@@ -20,6 +20,7 @@ func loadConfig() {
 	err = cfg.Section("rate limit").MapTo(config.RateLimit)
 	err = cfg.Section("direct rate limit").MapTo(config.RateLimitDirect)
 	err = cfg.Section("mysql").MapTo(config.Mysql)
+	err = cfg.Section("server").MapTo(config.Server)
 	if err != nil {
 		panic(err.Error())
 	}

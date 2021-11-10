@@ -12,6 +12,8 @@ type WallpaperSta struct {
 }
 
 type OtherSta struct {
+	ClientIP       string `json:"client_ip"`
+	Node           string `json:"node"`
 	SiteServed     int    `json:"site_served"`
 	WpPluginLatest string `json:"wp_plugin_latest"`
 }

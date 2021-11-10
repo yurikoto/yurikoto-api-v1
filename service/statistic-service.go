@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"yurikoto.com/yurikoto-api-go-v1/config"
 	"yurikoto.com/yurikoto-api-go-v1/entity"
 	"yurikoto.com/yurikoto-api-go-v1/redis"
 )
@@ -28,6 +29,7 @@ func (service *statisticService) Get() entity.Statistic {
 	statistic.Data.Wallpaper.Requested, err = rdb.Get(ctx, "wallpaper_requested").Int()
 	statistic.Data.Other.SiteServed = int(rdb.SCard(ctx, "domain_transfered").Val())
 	statistic.Data.Other.WpPluginLatest, err = rdb.Get(ctx, "wp_plugin_latest").Result()
+	statistic.Data.Other.Node = config.Server.Name
 	if err != nil {
 		panic(err.Error())
 	}

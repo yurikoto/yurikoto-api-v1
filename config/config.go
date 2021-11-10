@@ -20,6 +20,11 @@ type mysql struct {
 	Prefix   string
 }
 
+type server struct {
+	Name string
+}
+
 var RateLimit = new(rateLimit)
 var RateLimitDirect = new(rateLimitDirect)
 var Mysql = new(mysql)
+var Server = new(server)
