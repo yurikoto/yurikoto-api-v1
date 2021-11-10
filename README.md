@@ -85,7 +85,7 @@ location /
     
     #Set Nginx Cache
     
-    	add_header Cache-Control no-cache;
+    add_header Cache-Control no-cache;
     expires 12h;
 }
 ```
